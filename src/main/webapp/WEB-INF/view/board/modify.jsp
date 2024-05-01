@@ -9,39 +9,33 @@
 </head>
 <body>
 <c:import url="/WEB-INF/fragment/navbar.jsp"></c:import>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
 
 
-            <h3>새 게시물 작성</h3>
-
-            <form action="/add" method="post">
+            <h3>${board.id}번 게시물 수정</h3>
+            <form action="/modify" method="post">
+                <input type="hidden" name="id" value="${board.id}">
                 <div class="mb-3">
-                    <label for="inputTitle" class="form-label">
-                        제목
-                    </label>
-                    <input class="form-control" id="inputTitle" type="text" name="title" required>
+                    <label for="inputtitle" class="form-label"></label>
+                    제목
+                    <input id="inputtitle" class="form-control" type="text" name="title" value="${board.title}"
+                           required>
                 </div>
                 <div class="mb-3">
-                    <label for="textareaContent" class="form-label">
-                        본문
-                    </label>
-                    <textarea class="form-control" id="textareaContent" name="content" cols="30" rows="10"
-                              required></textarea>
+                    본문
+                    <textarea class="form-control" cols="30" rows="10" required
+                              name="content">${board.content}</textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="inputWriter" class="form-label">
-                        작성자
-                    </label>
-                    <input class="form-control" id="inputWriter" type="text" name="writer" required>
+                    작성자
+                    <input class="form-control" type="text" required name="writer" value="${board.writer}">
                 </div>
-                <div>
-                    <button>저장</button>
+                <div class="mb-3">
+                    <button>수정</button>
                 </div>
             </form>
-
         </div>
     </div>
 </div>
