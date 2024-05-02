@@ -29,4 +29,18 @@ public class MemberService {
     public void remove(Integer id) {
         mapper.deleteById(id);
     }
+
+    public void modify(Member member) {
+        mapper.update(member);
+    }
+
+    public String emailCheck(String email) {
+        Member member = mapper.selcectByEmail(email);
+        if (member == null) {
+            //사용가능
+            return "사용가능";
+        } else {
+            return "사용불가능";
+        }
+    }
 }
