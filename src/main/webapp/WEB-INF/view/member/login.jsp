@@ -9,34 +9,27 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-<c:import url="/WEB-INF/fragment/navbar.jsp"></c:import>
 
+<c:import url="/WEB-INF/fragment/navbar.jsp"></c:import>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-6">
-
-
-            <h3>새 게시물 작성</h3>
-
-            <form action="/add" method="post">
-                <div class="mb-3">
-                    <label for="inputTitle" class="form-label">
-                        제목
-                    </label>
-                    <input class="form-control" id="inputTitle" type="text" name="title" required>
-                </div>
-                <div class="mb-3">
-                    <label for="textareaContent" class="form-label">
-                        본문
-                    </label>
-                    <textarea class="form-control" id="textareaContent" name="content" cols="30" rows="10"
-                              required></textarea>
-                </div>
-                <div>
-                    <button>저장</button>
-                </div>
-            </form>
-
+        <div class="co1-6">
+            <h3 class="mb-4">로그인</h3>
+            <div>
+                <form action="/member/login" method="post">
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">이메일</label>
+                        <input id="inputEmail" name="username" type="email" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label">암호</label>
+                        <input id="inputPassword" name="password" type="password" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary">로그인</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -44,5 +37,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
         integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </body>
 </html>

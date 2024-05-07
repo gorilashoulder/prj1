@@ -31,3 +31,30 @@ ALTER TABLE member
 SELECT *
 FROM member;
 
+INSERT INTO board
+    (title, content, writer)
+SELECT title, content, writer
+FROM board;
+
+# board 테이블 수정
+# writer 컬럼 지우기
+# member_id INT REFERENCES member(id) 컬럼추가
+
+ALTER TABLE board
+    DROP COLUMN writer;
+
+ALTER TABLE prj1.board
+    ADD COLUMN member_id INT REFERENCES member (id);
+
+
+SELECT *
+FROM board
+LIMIT 4;
+SELECT *
+FROM member;
+
+UPDATE board
+SET member_id=5
+WHERE id > 0;
+
+DESCRIBE board;

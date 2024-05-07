@@ -3,6 +3,7 @@ package com.prj1.controller;
 import com.prj1.domain.Member;
 import com.prj1.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,9 +43,11 @@ public class MemberController {
     }
 
     @PostMapping("remove")
-    public String remove(Integer id) {
-        service.remove(id);
-        return "redirect:/member/list";
+    public String remove(Integer id, Authentication authentication) {
+        if (service.hasAccess(id, authentication)) {
+            service.remove(id);
+        }
+        return "redirect:/logout";
     }
 
     @GetMapping("modify")
@@ -54,8 +57,11 @@ public class MemberController {
     }
 
     @PostMapping("modify")
-    public String modify(Member member, RedirectAttributes rttr) {
-        service.modify(member);
+    public String modify(Member member, Authentication authentication, RedirectAttributes rttr) {
+        if (service.hasAccess(member.getId(), authentication)) {
+            service.modify(member);
+
+        }
         rttr.addAttribute("id", member.getId());
         return "redirect:/member/list";
     }
@@ -66,5 +72,10 @@ public class MemberController {
         //System.out.println("email = " + email);
         String message = service.emailCheck(email);
         return message;
+    }
+
+    @GetMapping("login")
+    public String loginForm() {
+        return "member/login";
     }
 }

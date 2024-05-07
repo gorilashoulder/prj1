@@ -29,10 +29,7 @@
                     <textarea class="form-control" cols="30" rows="10" required
                               name="content">${board.content}</textarea>
                 </div>
-                <div class="mb-3">
-                    작성자
-                    <input class="form-control" type="text" required name="writer" value="${board.writer}">
-                </div>
+
                 <div class="mb-3">
                     <button>수정</button>
                 </div>
