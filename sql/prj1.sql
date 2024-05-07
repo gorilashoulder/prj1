@@ -58,3 +58,16 @@ SET member_id=5
 WHERE id > 0;
 
 DESCRIBE board;
+
+create table authority
+(
+    id        INT AUTO_INCREMENT PRIMARY KEY,
+    member_id INT         NOT NULL REFERENCES member (id),
+    name      VARCHAR(20) NOT NULL
+);
+
+SELECT *
+FROM member;
+INSERT INTO authority
+    (member_id, name)
+VALUES (12, 'admin');
